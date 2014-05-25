@@ -1,0 +1,43 @@
+@(result: repositories.QueryResult[Patient], query: String, page: Int, maxPage: Int)
+@title = @{
+    if(query == null || query.isEmpty)
+        "Patients list"
+    else
+        "Search for patient: \"" + query + "\""
+}
+
+@main(title) {
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Sex</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(patient <- result.getItems()) {
+                <tr>
+                    <td><a href="@routes.PatientsController.show(patient.id)">@patient.id</a></td>
+                    <td>@patient.firstName</td>
+                    <td>@patient.lastName</td>
+                    <td>@patient.sex</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="@routes.PatientsController.create()">
+            <button type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-plus"></span> Add Patient
+            </button>
+        </a>
+        <span class="pull-right">
+            @pagination(page, maxPage, query)
+        </span>
+    </div>
+}

@@ -1,0 +1,16 @@
+<div class="pull-right" style="margin-top: 8px">
+    @if(session.get("email") == null) {
+        <a href="@routes.Application.login()" >
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-log-in"></span> log in
+            </button>
+        </a>
+    } else {
+        <span>@session.get("email")</span>&nbsp;
+        <a href="@routes.Application.logout()">
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-log-out"></span> log out
+            </button>
+        </a>
+    }
+</div>

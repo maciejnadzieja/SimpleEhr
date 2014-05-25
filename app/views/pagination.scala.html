@@ -1,0 +1,19 @@
+@(page: Int, maxPage: Int, query: String)
+@previousPage = @{page-1}
+@nextPage = @{page+1}
+@showPagesFrom = @{(page-2).max(1)}
+@showPagesTo = @{maxPage.min(page + 2)}
+
+<ul class="pagination">
+    @if(page > 1) {
+        <li><a href="@routes.PatientsController.list()?query=@query&page=@previousPage">&laquo;</a></li>
+    }
+
+    @for(p <- showPagesFrom to showPagesTo) {
+        <li @if(p==page) {class="active"}><a href="@routes.PatientsController.list()?query=@query&page=@p">@p</a></li>
+    }
+
+    @if(page < maxPage) {
+        <li><a href="@routes.PatientsController.list()?query=@query&page=@nextPage">&raquo;</a></li>
+    }
+</ul>

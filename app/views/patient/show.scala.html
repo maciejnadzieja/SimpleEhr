@@ -1,0 +1,47 @@
+@(patient: models.Patient)
+
+@main("Health record for " + patient.fullName) {
+    <div class="panel panel-default">
+        <div class="panel-heading">Patient data</div>
+        <div class="panel-body">
+            <div>
+                <span>lastName: <b>@patient.lastName</b></span>
+                <span>firstName: <b>@patient.firstName</b></span>
+                <span>sex: <b>M</b></span>
+            </div>
+            <div>
+                <span>date of birth: <b>24.09.1985</b></span>
+                <span>address: <b>Oxford, OX1 2JD, United Kingdom</b></span>
+            </div>
+            <div>
+                <span>id: <b>@patient.id</b></span>
+                <span>profession: <b>physicist</b></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Examination, symptoms, diagnose, notes</th>
+                <th>Illness code</th>
+                <th>Diagnosed for the first time, y/n</th>
+                <th>Sick leave, from-to</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Date</td>
+                <td>Examination, symptoms, diagnose, notes</td>
+                <td>Illness code</td>
+                <td>First time, y/n</td>
+                <td>Sick leave, from-to</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+}
+
+

@@ -1,0 +1,15 @@
+@(patientForm: Form[models.Patient])
+
+@import helper.twitterBootstrap._
+
+@main("Add new patient") {
+    <div class="well">
+        @helper.form(action = routes.PatientsController.create()) {
+            @helper.inputText(patientForm("firstName"))
+            @helper.inputText(patientForm("lastName"))
+            @helper.inputText(patientForm("id"))
+            @helper.select(field=patientForm("sex"),options = Seq("M"->"male", "F"->"female"))
+            <button type="submit" class="btn btn-primary">Add</button>
+        }
+    </div>
+}
